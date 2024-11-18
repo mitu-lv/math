@@ -46,7 +46,6 @@ body {
 
   .equation-field {
       display: flex;
-      margin-right: 15px;
   }
 
   .equation {
@@ -59,10 +58,9 @@ body {
   }
 
   .equations {
-      max-height: 700px;
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 
   .results {
