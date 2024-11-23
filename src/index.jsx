@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { App } from './App';
+// import './style.css';
 
-function Entry() {
-    return (
-        <App/>
-    );
-}
+// import { App } from './App';
+import {Mobile} from './Mobile';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Entry/>);
+// root.render(<App/>);
+root.render(<Mobile />);

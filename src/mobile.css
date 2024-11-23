@@ -1,0 +1,237 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Montserrat, sans-serif;
+}
+
+#root {
+  color: #090d12;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.snappy-container {
+  overflow: auto;
+  scroll-snap-type: y mandatory;
+  scroll-snap-stop: always;
+  overscroll-behavior-y: contain;
+  width: 100vw;
+  height: 100vh;
+}
+
+section {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: #87CEEB;
+  justify-content: space-evenly;
+  align-items: center;
+  scroll-snap-align: center;
+  flex-direction: column;
+}
+
+section:nth-child(odd) {
+  background-color: #98FF98;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+.next-button {
+  font-size: 2rem;
+  padding: 0.5rem;
+}
+
+.equation-field>div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+@keyframes shake {
+  0% {
+    margin-left: 0rem;
+  }
+
+  25% {
+    margin-left: 0.5rem;
+  }
+
+  75% {
+    margin-left: -0.5rem;
+  }
+
+  100% {
+    margin-left: 0rem;
+  }
+}
+
+.equation-field input {
+  /* padding: .5rem; */
+  border-radius: 4px;
+  /* border: 1px solid rgba(41, 44, 61, .3); */
+  display: block;
+  font-size: 3rem;
+  width: 90%;
+  outline: none;
+  border: none;
+}
+
+.equation-field input::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  border-bottom: 3px solid #fce38a;
+  transform: translateX(-100%);
+  transition: all 0.3s ease;
+}
+
+.equation-field input.correct {
+  background-color: #32CD32;
+  box-shadow: 0 0 0.5em #32CD32;
+}
+
+.equation-field input.incorrect {
+  background-color: #FF6F61;
+  -webkit-animation: shake 0.2s ease-in-out 0s 2;
+  animation: shake 0.2s ease-in-out 0s 2;
+  box-shadow: 0 0 0.5em #FF6F61;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  background-color: transparent;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.mobile-menu {
+  width: 70%;
+  height: 100%;
+  position: fixed;
+  z-index: 2;
+  background: #090d12;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+}
+
+.mobile-menu a {
+  width: 100%;
+  text-align: center;
+  margin: 1rem 0;
+  padding: 1rem;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.mobile-menu a:hover {
+  box-shadow: inset 0 0 1rem rgba(0, 0, 0, 0.7);
+  border-left: 3px solid #fff;
+  border-right: 3px solid #fff;
+}
+
+.mobile-menu__trigger {
+  cursor: pointer;
+  content: "";
+  position: absolute;
+  z-index: 3;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  top: 2rem;
+  right: -5rem;
+  background: #090d12;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-menu__trigger span {
+  display: block;
+  width: 50%;
+  height: 2px;
+  background: #fff;
+  position: relative;
+}
+
+.mobile-menu__trigger span::before,
+.mobile-menu__trigger span::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  right: 0;
+  background: #fff;
+  transition: all 0.3s;
+}
+
+.mobile-menu__trigger span::before {
+  top: -7px;
+}
+
+.mobile-menu__trigger span::after {
+  top: 7px;
+}
+
+.mobile-menu__trigger:hover span::before {
+  width: 50%;
+  top: -3px;
+  right: 0;
+  transform: rotate(30deg);
+}
+
+.mobile-menu__trigger:hover span::after {
+  width: 50%;
+  top: 3px;
+  right: 0;
+  transform: rotate(-30deg);
+}
+
+.mobile-menu_open {
+  transform: translateX(0%);
+  box-shadow: 0 0 2rem #000;
+}
+
+.mobile-menu_open+.overlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+.mobile-menu_open .mobile-menu__trigger span::before,
+.mobile-menu_open .mobile-menu__trigger span::after {
+  left: 0;
+}
+
+.mobile-menu_open .mobile-menu__trigger:hover span::before {
+  transform: rotate(-30deg);
+}
+
+.mobile-menu_open .mobile-menu__trigger:hover span::after {
+  transform: rotate(30deg);
+}
