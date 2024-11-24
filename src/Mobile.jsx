@@ -162,7 +162,7 @@ export const Mobile = () => {
                             className="next-button"
                             onClick={setup}
                         >
-                            Start again
+                            Back to lobby
                         </button>
                     </div>
                 </section>
@@ -263,7 +263,7 @@ export const Mobile = () => {
                                 value={amount}
                                 onChange={() => setAmount(Number(event.target.value))}
                             />
-                            <label>Max equation result</label>
+                            <label>Max multiplier</label>
                             <input
                                 className="setting"
                                 type="number"
