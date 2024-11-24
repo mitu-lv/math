@@ -24,3 +24,21 @@ export function generateExamples(amount = 10, maxSum = 20) {
     }
     return output;
 }
+
+function produceMultiplicationEquation(max = 12) {
+    const maxRandomLimit = max + 1;
+    const left = getRandomInt(maxRandomLimit);
+    const right = getRandomInt(maxRandomLimit);
+    const eq = `${left} x ${right} = `;
+    const answer = left * right;
+    return {eq, answer};
+}
+
+export function generateMultiplicationExamples(amount = 10, maxMultiplier = 20) {
+    const output = [];
+    for (let i = 0; i < amount; i++) {
+        const {eq, answer} = produceMultiplicationEquation(maxMultiplier);
+        output.push({label: eq, id: i, answer});
+    }
+    return output;
+}
